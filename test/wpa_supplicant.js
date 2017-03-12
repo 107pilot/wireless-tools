@@ -160,6 +160,29 @@ describe('wpa_supplicant', function() {
       });
     })
 
+    it('should start the daemon using open wifi network and sudo', function(done) {
+      wpa_supplicant.exec = function(command, callback) {
+        should(command).eql("printf 'network={ \n\tssid=\"RaspberryPi\"\n\tkey_mgmt=NONE\n}\n'" +
+          ' > wlan0-wpa_supplicant.conf &&' +
+          ' sudo wpa_supplicant -i wlan0 -B -D wext -c wlan0-wpa_supplicant.conf' +
+          ' && rm -f wlan0-wpa_supplicant.conf');
+
+        callback(null, '', '');
+      };
+
+      var options = {
+        interface: 'wlan0',
+        ssid: 'RaspberryPi',
+        driver: 'wext',
+        sudo: true
+      };
+
+      wpa_supplicant.enable(options, function(err) {
+        should(err).not.be.ok;
+        done();
+      });
+    })
+
     it('should handle errors', function(done) {
       wpa_supplicant.exec = function(command, callback) {
         callback('error');

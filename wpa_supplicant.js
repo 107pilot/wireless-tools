@@ -114,7 +114,7 @@ function enable(options, callback) {
       + options.driver + ' -c ' + file + ' && rm -f ' + file;
   } else {
     var command = "printf 'network={ \n" + "\tssid=\""+ options.ssid + "\"\n"
-      + "\tkey_mgmt=NONE\n" + "}\n' > " + file + ' && wpa_supplicant -i '
+      + "\tkey_mgmt=NONE\n" + "}\n' > " + file + ' && ' + (options.sudo ? 'sudo ' : '') + 'wpa_supplicant -i '
       + options.interface + ' -B -D ' + options.driver + ' -c ' + file + ' && rm -f ' + file;
   }
 
