@@ -1,3 +1,14 @@
+# Added options to execute command using sudo for the following methods:
+hostapd.disable |
+hostapd.enable |
+ifconfig.down |
+ifconfig.up |
+iw.scan |
+iwlist.scan |
+wpa_supplicant.disable |
+wpa_supplicant.enable |
+wpa_supplicant.manual |
+
 # Wireless tools for Node.js
 [![npm version](https://badge.fury.io/js/wireless-tools.svg)](http://badge.fury.io/js/wireless-tools)
 [![release version](https://img.shields.io/badge/version-0.19.0-blue.svg)](https://github.com/bakerface/wireless-tools)
