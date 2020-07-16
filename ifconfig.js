@@ -62,19 +62,19 @@ function parse_status_block(block) {
     parsed.address = match[1].toLowerCase();
   }
 
-  if ((match = block.match(/inet6\s+addr:\s*([^\s]+)/))) {
+  if ((match = block.match(/inet6\s*([^\s]+)/))) {
     parsed.ipv6_address = match[1];
   }
 
-  if ((match = block.match(/inet\s+addr:\s*([^\s]+)/))) {
+  if ((match = block.match(/inet\s*([^\s]+)/))) {
     parsed.ipv4_address = match[1];
   }
 
-  if ((match = block.match(/Bcast:\s*([^\s]+)/))) {
+  if ((match = block.match(/broadcast:\s*([^\s]+)/))) {
     parsed.ipv4_broadcast = match[1];
   }
 
-  if ((match = block.match(/Mask:\s*([^\s]+)/))) {
+  if ((match = block.match(/netmaskask:\s*([^\s]+)/))) {
     parsed.ipv4_subnet_mask = match[1];
   }
 
